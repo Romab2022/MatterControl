@@ -274,7 +274,7 @@ namespace MatterHackers.MatterControl.Tests.Automation
 					testRunner.ClickByName("Hotend 0");
 
 					// assert the temp is set when we first open (it comes from the material)
-					MHNumberEdit tempWidget = testRunner.GetWidgetByName("Temperature Input", out _) as MHNumberEdit;
+					ThemedNumberEdit tempWidget = testRunner.GetWidgetByName("Temperature Input", out _) as ThemedNumberEdit;
 					Assert.AreEqual(240, (int)tempWidget.Value);
 
 					// change material
@@ -593,6 +593,7 @@ namespace MatterHackers.MatterControl.Tests.Automation
 					.SwitchToSliceSettings()
 					.ClickByName("Slice Settings Overflow Menu")
 					.ClickByName("Advanced Menu Item")
+					.Delay()
 					.SelectSliceSettingsField(SettingsKey.bed_temperature)
 					.SelectSliceSettingsField(SettingsKey.temperature)
 					// Uncheck Has Heated Bed checkbox and make sure Bed Temp Textbox is not visible

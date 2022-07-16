@@ -40,7 +40,7 @@ using MatterHackers.MatterControl.CustomWidgets;
 using MatterHackers.MeshVisualizer;
 using MatterHackers.PolygonMesh;
 using MatterHackers.PolygonMesh.Processors;
-using MatterHackers.RayTracerNS;
+using MatterHackers.RayTracer;
 using MatterHackers.RenderOpenGl;
 using MatterHackers.VectorMath;
 
@@ -214,8 +214,10 @@ namespace MatterHackers.MatterControl.PartPreviewWindow
 
 				zHeightDisplayInfo.Visible = true;
 
-				double distanceToHit = Vector3Ex.Dot(mouseEvent3D.info.HitPosition, mouseEvent3D.MouseRay.directionNormal);
-				hitPlane = new PlaneShape(mouseEvent3D.MouseRay.directionNormal, distanceToHit, null);
+				var upNormal = Vector3.UnitZ;
+				var sideNormal = upNormal.Cross(mouseEvent3D.MouseRay.directionNormal).GetNormal();
+				var planeNormal = upNormal.Cross(sideNormal).GetNormal();
+				hitPlane = new PlaneShape(new Plane(planeNormal, mouseEvent3D.info.HitPosition), null);
 
 				initialHitPosition = mouseEvent3D.info.HitPosition;
 				transformOnMouseDown = selectedItem.Matrix;
