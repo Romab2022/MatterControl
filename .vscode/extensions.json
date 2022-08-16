@@ -3,6 +3,9 @@
         "aryanahire.monodevelop-monokai",
         "jmrog.vscode-nuget-package-manager",
         "aliasadidev.nugetpackagemanagergui",
-        "ms-vscode.remote-repositories"
+        "ms-vscode.remote-repositories",
+        "github.remotehub",
+        "randymarsh77.nuget-extensions-vscode",
+        "jesschadwick.nuget-reverse-package-search"
     ]
 }
